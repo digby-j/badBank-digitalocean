@@ -7,17 +7,46 @@
     <title>Bad Bank</title>
     
     <!-- Bootstrap CSS -->
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/npm/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+    <!-- Not to be used in production -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
 </head>
 <body>
+
+    <!-- div for components -->
+    <div id="root"></div>
+
+    
+    <!--
     <div id="navigation"></div>
 
     <main role="main" class="container" style="margin-top: 20px;">
         <div id="target"></div>
     </main>
+    -->
 </body>
+
+    <!-- Load React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router@3.0.2/umd/react-router.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router-dom@4.0.0/umd/react-router-dom.min.js" crossorigin></script>
+   
+    <!-- Load React Components -->
+    <script src="context.js" defer type="text/babel"></script>
+    <script src="navbar.js" defer type="text/babel"></script>
+    <script src="createaccount.js" defer type="text/babel"></script>
+    <script src="login.js" defer type="text/babel"></script>
+    <script src="deposit.js" defer type="text/babel"></script>
+    <script src="withdraw.js" defer type="text/babel"></script>
+    <script src="balance.js" defer type="text/babel"></script>
+    <script src="alldata.js" defer type="text/babel"></script>
+    <script src="home.js" defer type="text/babel"></script>
+    <script src="index.js" defer type="text/babel"></script>
+
     <script src="api.js"></script>
     <script src="modules.js"></script>
 </html>
