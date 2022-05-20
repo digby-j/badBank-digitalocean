@@ -1,16 +1,16 @@
 function Balance(){
-    return(
-        <h1>Balance component</h1>
-    );
-}
+    const ctx = React.userContext(UserContext);
+    const [show, setShow]       = React.useState(true);
+    const [status, setStatus]   = React.useState('');
 
-// function Balance(){
-//     return (
-//         <Card
-//             bgcolor="primary"
-//             header="Account Balance"
-//             status=""
-//             body=""
-//         />
-//     )
-// }
+    return (
+        <Card
+            bgcolor="primary"
+            header="Deposit Amount"
+            status={status}
+            body={show ?
+            <CreateDepositForm setShow={setShow}/> :
+            <CreateDepositMsg setShow={setShow}/>}
+        />
+    )
+}

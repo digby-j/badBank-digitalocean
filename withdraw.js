@@ -1,16 +1,18 @@
-// function Withdraw(){
-//     return(
-//         <h1>Withdraw component</h1>
-//     );
-// }
-
 function Withdraw(){
+    const ctx = React.useContext(UserContext);
+
+    function handle(data){
+        ctx.user.push({name:data.name,email:data.email,password:data.password,balance:100});
+        return true;
+    }
+
     return (
-        <Card
-            bgcolor="primary"
-            header="Withdraw from Account"
-            status=""
-            body=""
+        <BankForm
+        bgcolor="primary"
+        label="Create Account"
+        handle={handle}
+        hideAmount={true}
+        successButton="Add Another Account"
         />
     )
 }

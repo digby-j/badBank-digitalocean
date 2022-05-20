@@ -12,19 +12,19 @@ function NavBar(){
                         <a className="nav-link" href="#createAccount" onclick="loadCreateAccount()" id="createAccount">Create Account</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onclick="loadLogin()">Login</a>
+                        <a className="nav-link" href="#login" onclick="loadLogin()" id="login">Login</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onclick="loadDeposit()">Deposit</a>
+                        <a className="nav-link" href="#deposit" onclick="loadDeposit()" id="deposit">Deposit</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onclick="loadWithdraw()">Withdraw</a>
+                        <a className="nav-link" href="#withdraw" onclick="loadWithdraw()" id="withdraw">Withdraw</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onclick="loadBalance()">Balance</a>
+                        <a className="nav-link" href="#balance" onclick="loadBalance()" id="balance">Balance</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#" onclick="loadAllData()">AllData</a>
+                        <a className="nav-link" href="#alldata" onclick="loadAllData()" id="alldata">AllData</a>
                     </li>
                 </ul>
             </div>
