@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 function Spa(){
     return (
         <HashRouter>
@@ -23,4 +21,3 @@ ReactDOM.render(
   <Spa/>,
   document.getElementById('root')
 )
->>>>>>> main
