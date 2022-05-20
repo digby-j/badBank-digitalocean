@@ -33,3 +33,86 @@
         </ul>
     </div>
 </nav>
+
+<!-- Create Account -->
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Create Account</div>
+    <div class="card-body">
+        Name<br>
+        <input type="input" class="form-control" id="name" placeholder="Enter name"><br>
+        Email address<br>
+        <input type="input" class="form-control" id="email" placeholder="Enter email"><br>
+        Password<br>
+        <input type="input" class="form-control" id="password" placeholder="Enter password"><br>
+        <button type="submit" id="submit" class="btn" onclick="create()">Create Account</button>
+        <div id="createStatus"></div>
+    </div>
+  </div>
+
+  <!-- login -->
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Login</div>
+    <div class="card-body">
+        Email address<br>
+        <input type="input" class="form-control" id="loginEmail" placeholder="Enter email"><br>
+        Password<br>
+        <input type="input" class="form-control" id="loginPassword" placeholder="Enter password"><br>
+        <button type="submit" id="submit" class="btn" onclick="login()">Login</button>
+        <div id="loginStatus"></div>
+    </div>
+  </div>
+
+  <!-- Deposit -->
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Deposit</div>
+    <div class="card-body">
+        Email<br>
+        <input type="input" class="form-control" id="depositEmail" placeholder="Enter email"><br>
+        Amount<br>
+        <input type="input" class="form-control" id="depositAmount" placeholder="Enter amount"><br>
+        <button type="submit" id="submit" class="btn" onclick="deposit()">Deposit</button>
+        <div id="depositStatus"></div>
+    </div>
+  </div>
+
+<!-- Withdraw -->
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Withdraw</div>
+    <div class="card-body">
+        Email<br>
+        <input type="input" class="form-control" id="withdrawEmail" placeholder="Enter email"><br>
+        Password<br>
+        <input type="input" class="form-control" id="amountPassword" placeholder="Enter amount"><br>
+        <button type="submit" id="submit" class="btn" onclick="withdraw()">Submit</button>
+        <div id="withdrawStatus"></div>
+    </div>
+  </div>
+
+<!-- Balance -->
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Balance</div>
+    <div class="card-body">
+        Email<br>
+        <input type="input" class="form-control" id="balanceEmail" placeholder="Enter email"><br>
+        <button type="submit" id="submit" class="btn" onclick="balance()">Show Balance</button>
+        <div id="balanceStatus"></div>
+    </div>
+  </div>
+
+  <!-- default -->
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">BadBank Landing Module</div>
+    <div class="card-body">
+        <h5 class="card-title">Welcome to the Bad Bank</h5>
+        <h6 class="card-title">Now with even less security, for your surveillance</h6>
+        <p class="card-text">Quickly navigate using the menu bar atop the page.</p>
+        <img src="bank.png" class="img-fluid" alt="Responsive Image">
+        <div id="balanceStatus"></div>
+    </div>
+  </div>
+
+<!-- AllData -->
+
+        <h5>All Data in Store</h5>
+        <button type="button" class="btn btn-secondary" onclick="allData()">Show All Data</button>
+        <div id="allDataStatus"></div>
