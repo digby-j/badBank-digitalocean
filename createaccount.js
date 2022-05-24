@@ -1,14 +1,3 @@
-// function CreateAccount(){
-//     return (
-//         <Card
-//             bgcolor="primary"
-//             header="Create Account"
-//             status=""
-//             body=""
-//         />
-//     )
-// }
-
 function CreateAccount(){
     const [show, setShow]       = React.useState(true);
     const [status, setStatus]   = React.useState('');
