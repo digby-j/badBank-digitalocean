@@ -1,4 +1,4 @@
-function Withdraw(){
+function Withdraw(props){
     const ctx = React.useContext(UserContext);
 
     function handle(data){

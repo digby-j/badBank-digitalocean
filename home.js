@@ -1,16 +1,11 @@
-// function Home(){
-//     return(
-//         <h1>Home component</h1>
-//     );
-// }
-
 function Home(){
     return (
         <Card
-            bgcolor="primary"
-            header="Home"
-            status=""
-            body=""
+            txtcolor="black"
+            bgcolor="secondary"
+            header="Welcome to The Bad Bank"
+            text="Now with less security!"
+            body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
         />
     )
 }
