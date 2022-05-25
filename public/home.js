@@ -7,10 +7,11 @@
 function Home(){
     return (
         <Card
-            bgcolor="primary"
-            header="Home"
-            status=""
-            body=""
+        txtcolor="black"
+        bgcolor="light"
+        header="Welcome to The Bad Bank"
+        text="Now with less security!"
+        body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
         />
     )
 }
