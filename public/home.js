@@ -9,8 +9,9 @@ function Home(){
         <Card
         txtcolor="black"
         bgcolor="light"
-        header="Welcome to The Bad Bank"
-        text="Now with less security!"
+        header="BadBank"
+        title="Welcome to the Bank"
+        text="Now with little to no security! please enjoy!"
         body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
         />
     )

@@ -1,14 +1,3 @@
-// function CreateAccount(){
-//     return (
-//         <Card
-//             bgcolor="primary"
-//             header="Create Account"
-//             status=""
-//             body=""
-//         />
-//     )
-// }
-
 function CreateAccount(){
     const [show, setShow]       = React.useState(true);
     const [status, setStatus]   = React.useState('');
@@ -38,11 +27,16 @@ function CreateForm(props) {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const ctx = React.useContext(UserContext);
+
 
     function handle() {
         console.log(name,email,password);
-        ctx.users.push({name,email,password});
+        const url = `/account/create/${name}/${email}/${password}`;
+        (async () => {
+            var res = await fetch(url);
+            var data = await res.json();
+            console.log(data);
+        })();
         props.setShow(false);
     }
 
@@ -70,8 +64,8 @@ function CreateForm(props) {
     onChange={e => setPassword(e.currentTarget.value)} /><br/>
 
     <button type="submit"
-    className="btn btn-light"
-    onClick={handle}>Create Account</button>
+        className="btn btn-light"
+        onClick={handle}>Create Account</button>
 
     </>);
 
