@@ -1,18 +1,79 @@
-function Withdraw(){
-    const ctx = React.useContext(UserContext);
-
-    function handle(data){
-        ctx.user.push({name:data.name,email:data.email,password:data.password,balance:100});
-        return true;
-    }
-
+function Withdraw(props){
+    const [show, setShow]     = React.useState(true);
+    const [status, setStatus] = React.useState(''); 
+    const [amount, setAmount] = React.useState(''); 
+  
     return (
-        <BankForm
-        bgcolor="primary"
-        label="Create Account"
-        handle={handle}
-        hideAmount={true}
-        successButton="Add Another Account"
-        />
+      <Card
+        bgcolor="success"
+        header="Withdraw"
+        status={status}
+        body={show ? 
+          (<>
+          <WithdrawForm user={props.user} setShow={setShow} setStatus={setStatus} setAmount={setAmount}/> :
+         
+         </> ):
+        <>  <WithdrawMsg setShow={setShow} setStatus={setStatus}/>
+          
+          </> }
+      />
     )
-}
+  }
+  
+  function WithdrawMsg(props){
+    return(<>
+      <h5>Success</h5>
+      <button type="submit" 
+        className="btn btn-light" 
+        onClick={() => {
+          props.setShow(true);
+          props.setStatus('');
+        }}>
+          Withdraw again
+      </button>
+    </>);
+  }
+  
+  function WithdrawForm(props){
+   // const [email, setEmail]   = React.useState('');
+   const [amount, setAmount] = React.useState('');
+    
+  
+    function handle(){
+      fetch(`/account/update/${props.user.email}/-${amount}`)
+      .then(response => response.text())
+      .then(text => {
+          try {
+              const data = JSON.parse(text);
+              props.setStatus(JSON.stringify(data.amount));
+              props.setShow(false);
+              props.setAmount(data.amount);
+              console.log('JSON:', data);
+          } catch(err) {
+              props.setStatus('Deposit failed')
+              console.log('err:', text);
+          }
+      });
+    }
+  
+  
+    return(<>
+  
+      User<br/>
+      <p>{props.user.email}</p>
+  
+      Amount<br/>
+      <input type="number" 
+        className="form-control" 
+        placeholder="Enter amount" 
+        value={amount} 
+        onChange={e => setAmount(e.currentTarget.value)}/><br/>
+  
+      <button type="submit" 
+        className="btn btn-light" 
+        onClick={handle}>
+          Withdraw
+      </button>
+  
+    </>);
+  }

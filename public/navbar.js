@@ -1,4 +1,12 @@
-function NavBar(){
+function NavBar(props){
+
+    const onLogOut = (() => {
+        props.setUser({});
+        alert("You have logged out");
+    })
+
+    props.user;
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="#" onclick="defaultModule()">BadBank</a>
@@ -26,8 +34,12 @@ function NavBar(){
                     <li className="nav-item">
                         <a className="nav-link" href="#alldata" onclick="loadAllData()" id="alldata">AllData</a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" onClick={onLogOut}>Log Out</a>
+                    </li>    
                 </ul>
             </div>
+            {props.user && props.user.email}
         </nav>
     );
 }

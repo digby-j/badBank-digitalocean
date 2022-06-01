@@ -1,4 +1,4 @@
-function Login(){
+function Login(props){
     const [show, setShow] = React.useState(true);
     const [status, setStatus] = React.useState('');
 
@@ -8,8 +8,8 @@ function Login(){
             header="Login"
             status={status}
             body={show ?
-            <CreateLoginForm setShow={setShow}/> :
-            <CreateLoginMsg setShow={setShow}/>}
+            <CreateLoginForm setUser={props.setUser} setShow={setShow} setStatus={setStatus}/> :
+            <CreateLoginMsg setShow={setShow} setStatus={setStatus}/>}
         />
     )
 }
@@ -29,9 +29,23 @@ function CreateLoginForm(props) {
     const ctx = React.useContext(UserContext);
 
     function handle() {
-        console.log(email,password);
-        ctx.users.push({email,password});
-        props.setShow(false);
+        // console.log(email,password);
+        // ctx.users.push({email,password});
+        // props.setShow(false);
+        fetch(`/account/login/${email}/${password}`)
+        .then(response => response.text())
+        .then(text => {
+            try {
+                const data = JSON.parse(text);
+                props.setStatus('');
+                props.setShow(false);
+                props.setUser(data);
+                console.log('JSON:', data);
+            } catch(err) {
+                props.setStatus(text)
+                console.log('err:', text);
+            }
+        });
     }
 
     return (<>
