@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BadBank</title>
+    <meta charset="UTF-8"/>
+    <title>The Bad Bank, I hope you enforce hhtps</title>
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!--5.1.3-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Not to be used in production -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -19,25 +21,38 @@
 </body>
 
     <!-- Load React -->
-    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-router@5/umd/react-router.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"                 crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"         crossorigin></script>
+    <script src="https://unpkg.com/react-router@5/umd/react-router.min.js"         crossorigin></script>
     <script src="https://unpkg.com/react-router-dom@5/umd/react-router-dom.min.js" crossorigin></script>
 
 
 
     <!-- Load React Components -->
-    <script src="context.js" defer type="text/babel"></script>
-    <script src="navbar.js" defer type="text/babel"></script>
-    <script src="createaccount.js" defer type="text/babel"></script>
-    <script src="login.js" defer type="text/babel"></script>
-    <script src="deposit.js" defer type="text/babel"></script>
-    <script src="withdraw.js" defer type="text/babel"></script>
-    <script src="balance.js" defer type="text/babel"></script>
-    <script src="alldata.js" defer type="text/babel"></script>
-    <script src="home.js" defer type="text/babel"></script>
-    <script src="index.js" defer type="text/babel"></script>
+    <script src="context.js"        defer type="text/babel"></script>
+    <script src="navbar.js"         defer type="text/babel"></script>
+    <script src="createaccount.js"  defer type="text/babel"></script>
+    <script src="login.js"          defer type="text/babel"></script>
+    <script src="deposit.js"        defer type="text/babel"></script>
+    <script src="withdraw.js"       defer type="text/babel"></script>
+    <!-- <script src="balance.js"        defer type="text/babel"></script> -->
+    <script src="alldata.js"        defer type="text/babel"></script>
+    <script src="home.js"           defer type="text/babel"></script>
+    <script src="index.js"          defer type="text/babel"></script>
+    <link rel="stylesheet" href="styles.css">
 
-    <script src="api.js"></script>
-    <script src="modules.js"></script>
+    <script type="text/javascript">
+        function locationHashChanged() {
+          let lnk = document.getElementsByClassName("nav-item");
+          for (i = 0; i < lnk.length; i++){
+            let el = document.getElementById(lnk[i].id);
+            location.hash === "#/" + lnk[i].id + "/" ? 
+            (el.style.backgroundColor = "#04AA6D", el.style.borderRadius = "5px") : (el.style.backgroundColor = "#212529", el.style.borderRadius = "5px")
+          }
+        }
+        window.onhashchange = locationHashChanged;
+        </script>
+
+   <!-- <script src="api.js"></script>
+    <script src="modules.js"></script> -->
 </html>

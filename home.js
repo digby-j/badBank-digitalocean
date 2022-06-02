@@ -1,10 +1,12 @@
 function Home(){
+  const ctx = React.useContext(UserContext);
   return (
     <Card
+      bgcolor="light"
       txtcolor="black"
-      header="BadBank Landing Module"
+      header="The Bad Bank"
       title="Welcome to the bank"
-      text="You can move around using the navigation bar."
+      text="Now with little to no secutity, for your benefit"
       body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
     />    
   );  
