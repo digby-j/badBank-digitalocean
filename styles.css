@@ -1,15 +1,5 @@
-a.nav-link:hover{
+  a.nav-link:hover{
     cursor: pointer;
     border-radius: 5px;
     background: #04AA6D;
-}
-
-.navbar-band {
-    padding: 10px;
-}
-
-.navbar-band:hover{
-    cursor: pointer;
-    border-radius: 5px;
-    background: #555;
 }
