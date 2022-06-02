@@ -1,16 +1,18 @@
 function CreateAccount(){
+;
     const [show, setShow]           = React.useState(true);
     const [status, setStatus]       = React.useState('');
     const [name, setName]           = React.useState('');
     const [email, setEmail]         = React.useState('');
     const [password, setPassword]   = React.useState('');
-    const [require, setRequire]     = React.useState('');
-    const ctx                       = React.useContext(UserContext);  
+    const [caution, setCaution]     = React.useState('');
+    const ctx                       = React.useContext(UserContext)
+  
   
     function validate(field, label){
         if (!field) {
-        setRequire('Please enter ' + label);
-        setTimeout(() => setRequire(''), 3000);
+        setCaution('Please enter ' + label.toUpperCase());
+        setTimeout(() => setCaution(''), 3000);
           return false;
         }
         return true;
@@ -27,14 +29,14 @@ function CreateAccount(){
       if (!validate(email,    'email'))    return;
       if (!validate(password, 'password')) return;
       if (availableData(email) > 0) {
-          setRequire('There appears to be an account with those credentials, please login');
-          setTimeout(() => setRequire(''), 3000);
+          setCaution('There appears to be an account with those credentials, please login');
+          setTimeout(() => setCaution(''), 3000);
           return;
       }
  
       if (password.length < 8) {
-          setRequire('Password must have eight characters, please try again');
-          setTimeout(() => setRequire(''), 3000);
+          setCaution('Password must have eight characters, please try again');
+          setTimeout(() => setCaution(''), 3000);
           return;
       }
       ctx.actions.push({name,email,action:"Create Account",stamp: new Date().toString()});
@@ -55,7 +57,7 @@ function CreateAccount(){
         txtcolor="light"
         header="Create Account"
         status={status}
-        require={require}
+        caution={caution}
         body={show ? (  
                 <>
                 Name<br/>
@@ -64,9 +66,9 @@ function CreateAccount(){
                 <input type="input" className="form-control" id="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.currentTarget.value)} required/><br/>
                 Password<br/>
                 <input type="password" minLength='8' className="form-control" id="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.currentTarget.value)} required/><br/>
-                <div id="passError" value="test">
-                  <button type="submit" disabled={!name && !email && !password} id="create" className="btn btn-light" onClick={handleCreate} style={{margin: "10px"}}>Create Account</button>
-                </div>
+
+                <button type="submit" disabled={!name && !email && !password} id="create" className="btn btn-light" onClick={handleCreate} style={{margin: "10px"}}>Create Account</button>
+
                 </>
               ):(
                 <>

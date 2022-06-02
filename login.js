@@ -2,13 +2,13 @@ function Login(){
     const [show, setShow]           = React.useState(true);
     const [email, setEmail]         = React.useState('');
     const [password, setPassword]   = React.useState('');
-    const [require, setRequire]     = React.useState('');
+    const [caution, setCaution]     = React.useState('');
     const ctx                       = React.useContext(UserContext);
     
     function validate(field, label){
         if (!field) {
-          setRequire('Please enter ' + label);
-          setTimeout(() => setRequire(''), 3000);
+          setCaution('Please enter ' + label);
+          setTimeout(() => setCaution(''), 3000);
           return false;
         }
         return true;
@@ -20,8 +20,8 @@ function Login(){
         if (!validate(password, 'password')) return;
         let loginData = ctx.users.filter(item => item.email === email && item.password === password);
             if (loginData.length < 1) {
-                setRequire('no account associated with that email/password combination');
-                setTimeout(() => setRequire(''), 4000);
+                setCaution('no account associated with that email/password combination');
+                setTimeout(() => setCaution(''), 4000);
                 return;
             }
         let name = loginData[0].name; setEmail(loginData.email);
@@ -34,7 +34,7 @@ function Login(){
         <Card
         bgcolor="secondary"
         header="Login"
-        require={require}
+        caution={caution}
         body={show ? (  
             <>
             Email<br/>
