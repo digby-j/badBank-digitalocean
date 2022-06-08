@@ -14,14 +14,14 @@ function CreateAccount(){
     )
 }
 
-function CreateMsg(props) {
-    return (<>
-    <h5>Success</h5>
-    <button type="submit"
-        className="btn btn-light"
-        onClick={() => props.setShow(true)}>Add another Account</button>
+function CreateMsg(props){
+    return(<>
+      <h5>Success</h5>
+      <button type="submit" 
+        className="btn btn-light" 
+        onClick={() => props.setShow(true)}>Add another account</button>
     </>);
-}
+  }
 
 function CreateForm(props) {
     const [name, setName] = React.useState('');
@@ -31,12 +31,20 @@ function CreateForm(props) {
 
     function handle() {
         console.log(name,email,password);
-        const url = `/account/create/${name}/${email}/${password}`;
+        const auth = firebase.auth();
+        const promise = auth.createUserWithEmailAndPassword(
+          email,
+          password
+        );
+        promise.then(()=> {
+          const url = `/account/create/${name}/${email}/${password}`;
         (async () => {
-            var res = await fetch(url);
-            var data = await res.json();
-            console.log(data);
+            var res  = await fetch(url);
+            var data = await res.json();    
+            console.log(data);        
         })();
+        })
+        promise.catch((e) => console.log(e.message));
         props.setShow(false);
     }
 
@@ -63,9 +71,7 @@ function CreateForm(props) {
     value={password}
     onChange={e => setPassword(e.currentTarget.value)} /><br/>
 
-    <button type="submit"
-        className="btn btn-light"
-        onClick={handle}>Create Account</button>
+    <button type="submit" className="btn btn-light" onClick={handle}>Create Account</button>
 
     </>);
 

@@ -15,12 +15,14 @@ function Login(props){
 }
 
 function CreateLoginMsg(props) {
-    return (<>
+  return(<>
     <h5>Success</h5>
-    <button type="submit"
-        className="btn btn-light"
-        onClick={() => props.setShow(true)}>Sign Out</button>
-    </>);
+    <button type="submit" 
+      className="btn btn-light" 
+      onClick={() => props.setShow(true)}>
+        Authenticate again
+    </button>
+  </>);
 }
 
 function CreateLoginForm(props) {
@@ -29,10 +31,15 @@ function CreateLoginForm(props) {
     const ctx = React.useContext(UserContext);
 
     function handle() {
-        // console.log(email,password);
-        // ctx.users.push({email,password});
-        // props.setShow(false);
-        fetch(`/account/login/${email}/${password}`)
+        const auth = firebase.auth();
+        const promise = auth.signInWithEmailAndPassword(
+          email,
+          password
+        );
+        firebase.auth().onAuthStateChanged((firebaseUser) => {
+          if (firebaseUser) {
+            console.log(firebaseUser);
+            fetch(`/account/login/${email}/${password}`)
         .then(response => response.text())
         .then(text => {
             try {
@@ -46,7 +53,56 @@ function CreateLoginForm(props) {
                 console.log('err:', text);
             }
         });
+           //success
+          } else {
+           //error codes
+          }
+        });
+        promise.catch((e) => console.log(e.message));
+        
     }
+
+    
+  function handleGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(function (result) {
+        console.log(result);
+        const gmail = encodeURI(result.additionalUserInfo.profile.name);
+        console.log(gmail);
+        fetch(`/account/login/${gmail}/${gmail}`)
+        .then(response => response.text())
+        .then(async (text) => {
+            try {
+                const data = JSON.parse(text);
+                props.setStatus('');
+                props.setShow(false);
+                props.setUser(data);
+                console.log('JSON:', data);
+            } catch(err) {
+              console.log(err);
+                props.setStatus(text)
+                console.log('err:', text);
+                
+                const url = `/account/create/${gmail}/${gmail}/${gmail}`;
+                await fetch(url);
+                const res = await fetch(`/account/login/${gmail}/${gmail}`)
+                const text = await res.text();
+                const data = JSON.parse(text);
+                      props.setStatus('');
+                      props.setShow(false);
+                      props.setUser(data);
+            }
+        })
+       
+      })
+      .catch(function (error) {
+        console.log(error.code);
+        console.log(error.message);
+      });
+  }
 
     return (<>
 
@@ -64,9 +120,10 @@ function CreateLoginForm(props) {
     value={password}
     onChange={e => setPassword(e.currentTarget.value)} /><br/>
 
-    <button type="submit"
-    className="btn btn-light"
-    onClick={handle}>Login</button>
+    <button type="submit" className="btn btn-light" onClick={handle}>Login</button>
+    <br/>
+    <br/>
+    <button type="submit" className="btn btn-light" onClick={handleGoogle}>Google Login</button>
 
     </>);
 

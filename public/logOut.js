@@ -65,6 +65,6 @@ function LogOut(props){
         onChange={e => setPassword(e.currentTarget.value)}/><br/>
   
     <button type="submit" className="btn btn-light" onClick={handle}>Login</button>*/}
-      <button type="submit" className="btn btn-light" onClick={handle}>Login Out</button>
+      <button type="submit" className="btn btn-light" onClick={handle}>Logout</button>
     </>);
   }

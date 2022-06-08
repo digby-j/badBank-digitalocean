@@ -1,8 +1,25 @@
 
-const Route      = ReactRouterDOM.Route;
-const Link       = ReactRouterDOM.Link;
-const HashRouter = ReactRouterDOM.HashRouter;
-const UserContext = React.createContext(null);
+const Route         = ReactRouterDOM.Route;
+const Link          = ReactRouterDOM.Link;
+const HashRouter    = ReactRouterDOM.HashRouter;
+const BrowserRouter = ReactRouterDOM.BrowserRouter;
+const UserContext   = React.createContext(null);
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAsghpyEY97y4_6_u-nbjR9tyeo7A2U-pU",
+
+    authDomain: "badbank-8cf52.firebaseapp.com",
+  
+    projectId: "badbank-8cf52",
+  
+    storageBucket: "badbank-8cf52.appspot.com",
+  
+    messagingSenderId: "359944407222",
+  
+    appId: "1:359944407222:web:da82edcb052711e0a83e17"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 function Card(props){
     function classes(){
